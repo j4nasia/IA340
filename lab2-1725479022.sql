@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS "income" (
 );
 
 CREATE TABLE IF NOT EXISTS "population" (
-	"fips" serial NOT NULL,
+	"fips" varchar(4) NOT NULL,
 	"income" bigint NOT NULL,
 	"year" bigint NOT NULL,
 	PRIMARY KEY ("fips", "year")

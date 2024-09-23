@@ -10,9 +10,11 @@ FROM income i
 JOIN states s ON i.state_id = s.state_id
 WHERE i.year = (SELECT MAX(year) FROM income)
 ORDER BY i.income DESC
-LIMIT 1; worked perfect */
+LIMIT 1; 
+
+/*worked perfect */
 --4.7
-/* WITH VA_Population AS (
+/WITH VA_Population AS (
     SELECT year, pop
     FROM population
     WHERE fips = '51'              -- FIPS code for Virginia
@@ -23,6 +25,7 @@ SELECT
     (MAX(pop) - MIN(pop)) / NULLIF(MIN(pop), 0) * 100 AS growth_rate
 FROM VA_Population
 WHERE year BETWEEN (SELECT MAX(year) - 5 FROM VA_Population) AND (SELECT MAX(year) FROM VA_Population);
-Didn't work */
+
+/*Didn't work */
 --4.8
 /* No, ChatGPT answers are not always reliable, so I had to reword and re-ask the questions to get a more precise answer */

@@ -5,15 +5,10 @@
 --4.3
 /* just fine */
 --4.6
-/* WITH RecentIncome AS (
-    SELECT fips, MAX(year) AS recent_year
-    FROM income
-    GROUP BY fips
-)
-SELECT n.name, i.income, i.year
+/SELECT s.state_name, i.year, i.income
 FROM income i
-JOIN name n ON i.fips = n.fips
-JOIN RecentIncome r ON i.fips = r.fips AND i.year = r.recent_year
+JOIN states s ON i.state_id = s.state_id
+WHERE i.year = (SELECT MAX(year) FROM income)
 ORDER BY i.income DESC
 LIMIT 1; worked perfect */
 --4.7
@@ -29,3 +24,5 @@ SELECT
 FROM VA_Population
 WHERE year BETWEEN (SELECT MAX(year) - 5 FROM VA_Population) AND (SELECT MAX(year) FROM VA_Population);
 Didn't work */
+--4.8
+/* No, ChatGPT answers are not always reliable, so I had to reword and re-ask the questions to get a more precise answer */
